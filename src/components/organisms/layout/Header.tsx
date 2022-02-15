@@ -8,7 +8,7 @@ export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
-  const onClickHome = () => navigate("/home");
+  const onClickHome = useCallback(() => navigate("/home"), []);
   const onClickSetting = useCallback(() => navigate("/home/setting"), []);
   const onClickUserManagement = useCallback(
     () => navigate("/home/user_management"),
