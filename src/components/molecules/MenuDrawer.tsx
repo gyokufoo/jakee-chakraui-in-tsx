@@ -10,18 +10,63 @@ import {
 type Props = {
   onClose: () => void;
   isOpen: boolean;
+  onClickHome: () => void;
+  onClickSetting: () => void;
+  onClickUserManagement: () => void;
 };
 
 export const MenuDrawer: VFC<Props> = memo((props) => {
-  const { onClose, isOpen } = props;
+  const {
+    onClose,
+    isOpen,
+    onClickHome,
+    onClickSetting,
+    onClickUserManagement,
+  } = props;
+
+  const onClickHomeCloseMenu = () => {
+    onClickHome();
+    onClose();
+  };
+
   return (
-    <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
+    <Drawer
+      placement="left"
+      size="xs"
+      onClose={onClose}
+      isOpen={isOpen}
+      closeOnOverlayClick={true}
+    >
       <DrawerOverlay>
         <DrawerContent>
           <DrawerBody p={0} bg="gray.100">
-            <Button w="100%">Top</Button>
-            <Button w="100%">UserList</Button>
-            <Button w="100%">Settings</Button>
+            <Button
+              w="100%"
+              onClick={() => {
+                onClickHome();
+                onClose();
+              }}
+            >
+              Top
+            </Button>
+            <Button
+              w="100%"
+              onClick={() => {
+                onClickUserManagement();
+                onClose();
+              }}
+            >
+              UserManagement
+            </Button>
+            <Button
+              w="100%"
+              onClick={() => {
+                onClickSetting();
+                onClose();
+              }}
+            >
+              Settings
+            </Button>
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>
