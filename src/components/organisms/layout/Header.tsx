@@ -6,6 +6,8 @@ import { MenuDrawer } from "../../molecules/MenuDrawer";
 export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const onClickHome = () => {};
+
   return (
     <>
       <Flex
